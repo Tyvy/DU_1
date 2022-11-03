@@ -1,9 +1,9 @@
 #PIŠKVORKY
-from turtle import forward, exitonclick, right, left, speed, goto, circle, down, up, pos
-A=50
+from turtle import forward, exitonclick, right, left, speed, goto, circle, down, up, pos # Naimportoval jsem si všechny potřebné fuknkce pro pohyb želvy
+A=50 # Defoultně nastavuji hodnotu na 50
 speed (0)
 
-for m in range (3):
+for m in range (3):             #Vykreslení čtvercové sítě 3x3
     for i in range (3):
         for x in range (4):
             forward (A)
@@ -14,23 +14,23 @@ for m in range (3):
     right (90)
     forward (A)
     right (90)
-goto (0,0)
-for i in range(9):
-    while True:
-        sloupec = int(input("Zadej číslo sloupce: "))
-        if sloupec > 3 or sloupec < 1:
+goto (0,0)       #Poslal jsem želvu na počátek, abych mohl lépe naprogramovat její pohyb při hře
+for i in range(9): 
+    while True: #potřeba uzavřít celý tah do podmínky, aby hráči nemohli hrát mimo zadané pole
+        sloupec = int(input("Zadej číslo sloupce: ")) #Otázka na sloupec v němž chce hráč hrát
+        if sloupec > 3 or sloupec < 1: # je potřeba zajisti, že hráči nebudou moci hrát mimo čtvecvou síť, proto při zadání neexistujícího sloupce či řádku dostanou chybovou hlášku
             print ("Haraj v poli")
             continue
-        radek = int(input("Zadej číslo řádku: "))
+        radek = int(input("Zadej číslo řádku: ")) #Otázka na řádek v němž chce hráč hrát
         if radek > 3 or radek < 1:
             print ("Haraj v poli")
             continue
-        x=A/2+(radek-1)*A
-        y=(sloupec-1)*A
+        x=A/2+(radek-1)*A # Přepočítání souřadnic pro želvu na základě vybraného řádku a sloupce (prototože kolečko se vykresluje od středu spodní strany čtverce, je potřeba nastavit x souřadnici tak aby želva začala kreslit ve středu spodní strany čtverce)
+        y=(sloupec-1)*A 
         up()
-        goto (x,y)
+        goto (x,y) # Posílám želvu na vybrané souřadnice, s perem nahoře
         down()
-        circle (A/2)
+        circle (A/2) # vykreslení kruhu
         break
     while True:
         sloupec = int(input("Zadej číslo sloupce: "))
@@ -48,7 +48,7 @@ for i in range(9):
         down()
         goto (x+(A/2),y)
         down()
-        goto (pos()[0]-A,pos()[1]+A)
+        goto (pos()[0]-A,pos()[1]+A) #vykreslení křížku z rohu do rohu pomocí funkce goto která je čitelnější a není v ní potřeba přepočítávat úhlopříčky ve čtverci
         goto (pos()[0]+(A/2),pos()[1]-(A/2))
         goto (pos()[0]+(A/2),pos()[1]+(A/2))
         goto (pos()[0]-A,pos()[1]-A)
