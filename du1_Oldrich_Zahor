@@ -1,0 +1,58 @@
+#PIŠKVORKY
+from turtle import forward, exitonclick, right, left, speed, goto, circle, down, up, pos
+A=50
+speed (0)
+
+for m in range (3):
+    for i in range (3):
+        for x in range (4):
+            forward (A)
+            left (90)
+        forward (A)
+    right (180)
+    forward (3*A)
+    right (90)
+    forward (A)
+    right (90)
+goto (0,0)
+for i in range(9):
+    while True:
+        sloupec = int(input("Zadej číslo sloupce: "))
+        if sloupec > 3 or sloupec < 1:
+            print ("Haraj v poli")
+            continue
+        radek = int(input("Zadej číslo řádku: "))
+        if radek > 3 or radek < 1:
+            print ("Haraj v poli")
+            continue
+        x=A/2+(radek-1)*A
+        y=(sloupec-1)*A
+        up()
+        goto (x,y)
+        down()
+        circle (A/2)
+        break
+    while True:
+        sloupec = int(input("Zadej číslo sloupce: "))
+        if sloupec > 3 or sloupec < 1:
+            print ("Haraj v poli")
+            continue
+        radek = int(input("Zadej číslo řádku: "))
+        if radek > 3 or radek < 1:
+            print ("Haraj v poli")
+            continue
+        x=A/2+(radek-1)*A
+        y=(sloupec-1)*A
+        up()
+        goto (x,y)
+        down()
+        goto (x+(A/2),y)
+        down()
+        goto (pos()[0]-A,pos()[1]+A)
+        goto (pos()[0]+(A/2),pos()[1]-(A/2))
+        goto (pos()[0]+(A/2),pos()[1]+(A/2))
+        goto (pos()[0]-A,pos()[1]-A)
+
+        break
+
+exitonclick ()
